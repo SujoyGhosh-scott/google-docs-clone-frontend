@@ -1,3 +1,4 @@
+import Grid from "@material-ui/core/Grid";
 import React from "react";
 import {
   BrowserRouter as Router,
@@ -19,16 +20,16 @@ function App() {
         </Route>
         <Route path="/documents/:id">
           <Header />
-          <div
+          <Grid
             style={{
-              marginTop: "5rem",
-              border: "1px solid blue",
+              marginTop: "4rem",
               display: "flex",
+              height: 'calc(100vh - 65px)'
             }}
           >
             <Editor />
             <Sidebar />
-          </div>
+          </Grid>
         </Route>
       </Switch>
     </Router>

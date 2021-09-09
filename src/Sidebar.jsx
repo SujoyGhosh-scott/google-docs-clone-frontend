@@ -1,14 +1,16 @@
 import React from "react";
+import Grid from '@material-ui/core/Grid'
 
 const Sidebar = () => {
   return (
-    <div
+    <Grid
       style={{
-        border: "1px solid red",
+        borderLeft: '1px solid lightgray',
+        width: '3.5rem'
       }}
     >
-      <h1>sidebar</h1>
-    </div>
+      test
+    </Grid>
   );
 };
 
