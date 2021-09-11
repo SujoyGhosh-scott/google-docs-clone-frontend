@@ -1,6 +1,7 @@
 import React, { useState } from "react";
+import { v4 as uuidV4 } from "uuid";
 import { useHistory } from "react-router-dom";
-import headerLogo from "./docsLogo.png";
+import headerLogo from "./images/docsLogo.png";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Avatar from "@material-ui/core/Avatar";
@@ -8,7 +9,7 @@ import Button from "@material-ui/core/Button";
 import IconButton from "@material-ui/core/IconButton";
 import Tooltip from "@material-ui/core/Tooltip";
 import StarBorderIcon from "@material-ui/icons/StarBorder";
-import LockIcon from "@material-ui/icons/Lock";
+import LinkIcon from '@material-ui/icons/Link';
 import CommentOutlinedIcon from "@material-ui/icons/CommentOutlined";
 import { makeStyles } from "@material-ui/core/styles";
 import PresentToAllRoundedIcon from "@material-ui/icons/PresentToAllRounded";
@@ -67,6 +68,9 @@ const useStyles = makeStyles(() => ({
     padding: "6px 1rem",
     marginLeft: 10,
     marginRight: "1rem",
+    "&:hover": {
+      background: "#1b7fde",
+    },
   },
   presentBtn: {
     border: "1px solid lightgray",
@@ -75,6 +79,13 @@ const useStyles = makeStyles(() => ({
     borderRadius: 20,
     marginLeft: 10,
   },
+  starIcon: {
+    "&:hover": {
+      background: "#EDEFEF",
+      borderRadius: 2,
+    },
+
+  }
 }));
 
 const tooltipStyles = makeStyles((theme) => ({
@@ -99,7 +110,7 @@ const Header = () => {
         <Tooltip arrow classes={tooltipClass} title="New Document">
           <img
             src={headerLogo}
-            onClick={() => history.push("/")}
+            onClick={() => history.push(`/document/${uuidV4()}`)}
             className={classes.headerLogo}
             alt=""
           />
@@ -121,9 +132,9 @@ const Header = () => {
               classes={tooltipClass}
             >
               {star ? (
-                <StarIcon htmlColor="orange" fontSize="small" />
+                <StarIcon htmlColor="orange" className={classes.starIcon} fontSize="small" />
               ) : (
-                <StarBorderIcon htmlColor="#6e6e6e" fontSize="small" />
+                <StarBorderIcon htmlColor="#6e6e6e" className={classes.starIcon} fontSize="small" />
               )}
             </Tooltip>
           </div>
@@ -152,9 +163,9 @@ const Header = () => {
             <PresentToAllRoundedIcon htmlColor="#1b7fde" />
           </IconButton>
         </Tooltip>
-        <Tooltip classes={tooltipClass} arrow title="Private to only me">
+        <Tooltip classes={tooltipClass} arrow title="Anyone with the link can access">
           <Button
-            startIcon={<LockIcon style={{ height: 15, width: 15 }} />}
+            startIcon={<LinkIcon style={{ height: 15, width: 15 }} />}
             className={classes.button}
           >
             Share
