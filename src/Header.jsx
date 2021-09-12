@@ -9,7 +9,7 @@ import Button from "@material-ui/core/Button";
 import IconButton from "@material-ui/core/IconButton";
 import Tooltip from "@material-ui/core/Tooltip";
 import StarBorderIcon from "@material-ui/icons/StarBorder";
-import LinkIcon from '@material-ui/icons/Link';
+import LinkIcon from "@material-ui/icons/Link";
 import CommentOutlinedIcon from "@material-ui/icons/CommentOutlined";
 import { makeStyles } from "@material-ui/core/styles";
 import PresentToAllRoundedIcon from "@material-ui/icons/PresentToAllRounded";
@@ -84,8 +84,7 @@ const useStyles = makeStyles(() => ({
       background: "#EDEFEF",
       borderRadius: 2,
     },
-
-  }
+  },
 }));
 
 const tooltipStyles = makeStyles((theme) => ({
@@ -105,7 +104,7 @@ const Header = () => {
   const tooltipClass = tooltipStyles();
 
   return (
-    <AppBar position="fixed" className={classes.root}>
+    <AppBar position="fixed" className={`${classes.root} hidden`}>
       <Toolbar className={classes.container}>
         <Tooltip arrow classes={tooltipClass} title="New Document">
           <img
@@ -132,9 +131,17 @@ const Header = () => {
               classes={tooltipClass}
             >
               {star ? (
-                <StarIcon htmlColor="orange" className={classes.starIcon} fontSize="small" />
+                <StarIcon
+                  htmlColor="orange"
+                  className={classes.starIcon}
+                  fontSize="small"
+                />
               ) : (
-                <StarBorderIcon htmlColor="#6e6e6e" className={classes.starIcon} fontSize="small" />
+                <StarBorderIcon
+                  htmlColor="#6e6e6e"
+                  className={classes.starIcon}
+                  fontSize="small"
+                />
               )}
             </Tooltip>
           </div>
@@ -163,7 +170,11 @@ const Header = () => {
             <PresentToAllRoundedIcon htmlColor="#1b7fde" />
           </IconButton>
         </Tooltip>
-        <Tooltip classes={tooltipClass} arrow title="Anyone with the link can access">
+        <Tooltip
+          classes={tooltipClass}
+          arrow
+          title="Anyone with the link can access"
+        >
           <Button
             startIcon={<LinkIcon style={{ height: 15, width: 15 }} />}
             className={classes.button}

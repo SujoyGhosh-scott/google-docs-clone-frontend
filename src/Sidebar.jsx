@@ -4,11 +4,11 @@ import Grid from "@material-ui/core/Grid";
 import IconButton from "@material-ui/core/IconButton";
 import Icon from "@material-ui/core/Icon";
 import Tooltip from "@material-ui/core/Tooltip";
-import AddIcon from '@material-ui/icons/Add';
+import AddIcon from "@material-ui/icons/Add";
 
-import calenderIcon from './images/calender.png';
-import googleIcon from './images/google.png';
-import keepIcon from './images/keep.png';
+import calenderIcon from "./images/calender.png";
+import googleIcon from "./images/google.png";
+import keepIcon from "./images/keep.png";
 
 const useStyles = makeStyles(() => ({
   root: {
@@ -19,39 +19,44 @@ const useStyles = makeStyles(() => ({
   icons: {
     height: 40,
     width: 40,
-    marginTop: '1rem'
+    marginTop: "1rem",
   },
   divider: {
-    borderTop: '1px solid lightgray', 
-    width: '60%', 
-    marginTop: '2rem', 
-    marginBottom: '1rem'
-  }
+    borderTop: "1px solid lightgray",
+    width: "60%",
+    marginTop: "2rem",
+    marginBottom: "1rem",
+  },
 }));
 
 const Sidebar = () => {
   const classes = useStyles();
 
   return (
-    <Grid container direction="column" alignItems="center" className={classes.root}>
+    <Grid
+      container
+      direction="column"
+      alignItems="center"
+      className={`${classes.root} hidden`}
+    >
       <Tooltip title="Calender">
         <IconButton className={classes.icons}>
-          <Icon style={{textAlign: 'center'}}>
-            <img src={calenderIcon} alt="" style={{height: '110%'}} />
+          <Icon style={{ textAlign: "center" }}>
+            <img src={calenderIcon} alt="" style={{ height: "110%" }} />
           </Icon>
         </IconButton>
       </Tooltip>
       <Tooltip title="Keep">
         <IconButton className={classes.icons}>
-          <Icon style={{textAlign: 'center'}}>
-            <img src={googleIcon} alt="" style={{height: '80%'}} />
+          <Icon style={{ textAlign: "center" }}>
+            <img src={googleIcon} alt="" style={{ height: "80%" }} />
           </Icon>
         </IconButton>
       </Tooltip>
       <Tooltip title="Tasks">
         <IconButton className={classes.icons}>
-          <Icon style={{textAlign: 'center'}}>
-            <img src={keepIcon} alt="" style={{height: '90%'}} />
+          <Icon style={{ textAlign: "center" }}>
+            <img src={keepIcon} alt="" style={{ height: "90%" }} />
           </Icon>
         </IconButton>
       </Tooltip>
