@@ -14,6 +14,8 @@ import CommentOutlinedIcon from "@material-ui/icons/CommentOutlined";
 import { makeStyles } from "@material-ui/core/styles";
 import PresentToAllRoundedIcon from "@material-ui/icons/PresentToAllRounded";
 import StarIcon from "@material-ui/icons/Star";
+import ShareDialog from "./ShareDialog";
+import Snackbar from "@material-ui/core/Snackbar";
 
 const useStyles = makeStyles(() => ({
   root: {
@@ -99,6 +101,8 @@ const tooltipStyles = makeStyles((theme) => ({
 
 const Header = () => {
   const [star, setStar] = useState(false);
+  const [open, setOpen] = useState(false);
+  const [snackbar, setSnackbar] = useState(false);
   const history = useHistory();
   const classes = useStyles();
   const tooltipClass = tooltipStyles();
@@ -178,6 +182,7 @@ const Header = () => {
           <Button
             startIcon={<LinkIcon style={{ height: 15, width: 15 }} />}
             className={classes.button}
+            onClick={() => setOpen(true)}
           >
             Share
           </Button>
@@ -186,6 +191,14 @@ const Header = () => {
           <Avatar style={{ height: 35, width: 35, cursor: "pointer" }} />
         </Tooltip>
       </Toolbar>
+      <ShareDialog open={open} setOpen={setOpen} setSnackbar={setSnackbar} />
+      <Snackbar
+        open={snackbar}
+        anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
+        onClose={() => setSnackbar(false)}
+        autoHideDuration={2000}
+        message="Link copied"
+      />
     </AppBar>
   );
 };
