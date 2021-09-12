@@ -13,7 +13,7 @@ export default function Document() {
   const [quill, setQuill] = useState();
 
   useEffect(() => {
-    const s = io("http://localhost:3001");
+    const s = io("https://sg-google-docs-clone.herokuapp.com");
     setSocket(s);
 
     return () => {
